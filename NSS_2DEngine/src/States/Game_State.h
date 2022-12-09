@@ -5,6 +5,7 @@
 #include "../Core/Map.h"
 #include "../Core/Camera.h"
 #include "../Network/Client.h"
+#include "../Entity/Player.h"
 
 class Game_State : public State
 {
@@ -20,13 +21,7 @@ public:
 
 	virtual bool IsActive() override;
 
-	void MoveRight();
-	void MoveLeft();
-	void Stop();
-
-	void TestMouseP();
-	void TestMouseR();
-
+	void ConnectToServer();
 	void HandlePacket(const PacketID& id, sf::Packet& packet, Client* client);
 	void ProcessCommand();
 	void HandleServer();

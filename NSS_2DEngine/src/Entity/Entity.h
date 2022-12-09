@@ -10,15 +10,15 @@ public:
 	~Entity();
 
 	void Update(float dt);
-	void SetVelocity(float vel);
+	virtual void SetVelocity(sf::Vector2f vel) = 0;
 
 	sf::Sprite* GetSprite();
 	sf::Vector2f GetPosition();
 
-private:
+protected:
 	sf::Sprite sprite;
 
-	float velocity;
+	sf::Vector2f velocity;
 };
 
 #endif

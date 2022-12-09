@@ -19,19 +19,10 @@ void Game_State::Init()
 
 	Asset_Manager::GetInstance()->AddTexture("dirt_tile", "../assets/textures/tiles/dirt_tile.png");
 	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/sprites/player.png");
-	Entity_Manager::GetInstance()->AddEntity("player", sf::Vector2f(200, 200), Asset_Manager::GetInstance()->GetTexture("player"));
+	Entity_Manager::GetInstance()->AddEntity<Player>("player", sf::Vector2f(200, 200), Asset_Manager::GetInstance()->GetTexture("player"));
 	
 	map.BuildMap();
 	camera.FollowTarget(Entity_Manager::GetInstance()->GetEntity("player"));
-
-	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::A, 
-		std::bind(&Game_State::MoveLeft, this), std::bind(&Game_State::Stop, this));
-
-	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::D,
-		std::bind(&Game_State::MoveRight, this), std::bind(&Game_State::Stop, this));
-
-	Input_Manager::GetInstance()->AddMouseBinding(sf::Mouse::Button::Left,
-		std::bind(&Game_State::TestMouseP, this), std::bind(&Game_State::TestMouseR, this));
 }
 
 void Game_State::Cleanup()
@@ -62,30 +53,7 @@ bool Game_State::IsActive()
 	return isActive;
 }
 
-void Game_State::MoveRight()
-{
-	Entity* entity = Entity_Manager::GetInstance()->GetEntity("player");
-	entity->SetVelocity(0.2);
-}
-
-void Game_State::MoveLeft()
-{
-	Entity* entity = Entity_Manager::GetInstance()->GetEntity("player");
-	entity->SetVelocity(-0.2);
-}
-
-void Game_State::Stop()
-{
-	Entity* entity = Entity_Manager::GetInstance()->GetEntity("player");
-	entity->SetVelocity(0);
-}
-
-void Game_State::TestMouseP()
-{
-
-}
-
-void Game_State::TestMouseR()
+void Game_State::ConnectToServer()
 {
 	if (!client->IsConnected())
 	{

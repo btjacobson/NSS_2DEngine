@@ -20,16 +20,6 @@ Entity_Manager::~Entity_Manager()
     instance = nullptr;
 }
 
-void Entity_Manager::AddEntity(std::string name, sf::Vector2f position, sf::Texture* texture)
-{
-    Entity* tEntity = new Entity(position, texture);
-
-    if (tEntity && entities.find(name) == entities.end())
-    {
-        entities.insert(std::make_pair(name, tEntity));
-    }
-}
-
 void Entity_Manager::RemoveEntity(std::string name)
 {
     if (entities.find(name) != entities.end())

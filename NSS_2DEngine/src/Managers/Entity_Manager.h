@@ -5,7 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Core/Entity.h"
+#include "../Entity/Entity.h"
 
 class Entity_Manager
 {
@@ -14,8 +14,18 @@ public:
 	static Entity_Manager* GetInstance();
 
 	~Entity_Manager();
+	
+	template<class T>
+	void AddEntity(std::string name, sf::Vector2f position, sf::Texture* texture)
+	{
+		T* tEntity = new T(position, texture);
 
-	void AddEntity(std::string name, sf::Vector2f position, sf::Texture* texture);
+		if (tEntity && entities.find(name) == entities.end())
+		{
+			entities.insert(std::make_pair(name, tEntity));
+		}
+	}
+
 	void RemoveEntity(std::string name);
 	void ClearEntities();
 	void Update(float dt);

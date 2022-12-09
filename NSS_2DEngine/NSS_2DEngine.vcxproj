@@ -113,7 +113,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\NULL Stack Studios\NSS_2DEngine\x64\Debug;C:\C++ Libs\SFML-2.5.1 64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Dev\NSS_2DEngine\x64\Debug;C:\C++ Libs\SFML-2.5.1 64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>NSS_Shared.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -132,13 +132,14 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\NULL Stack Studios\NSS_2DEngine\x64\Debug;C:\C++ Libs\SFML-2.5.1 64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Dev\NSS_2DEngine\x64\Release;C:\C++ Libs\SFML-2.5.1 64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>NSS_Shared.lib;sfml-audio.lib;sfml-graphics.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Camera.cpp" />
-    <ClCompile Include="src\Core\Entity.cpp" />
+    <ClCompile Include="src\Entity\Entity.cpp" />
+    <ClCompile Include="src\Entity\Player.cpp" />
     <ClCompile Include="src\Managers\Entity_Manager.cpp" />
     <ClCompile Include="src\Core\Tile.cpp" />
     <ClCompile Include="src\Core\Map.cpp" />
@@ -161,9 +162,10 @@
   <ItemGroup>
     <ClInclude Include="src\Core\App.h" />
     <ClInclude Include="src\Core\Camera.h" />
+    <ClInclude Include="src\Entity\Player.h" />
     <ClInclude Include="src\Managers\Asset_Manager.h" />
     <ClInclude Include="src\Gui\Button.h" />
-    <ClInclude Include="src\Core\Entity.h" />
+    <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\Managers\Entity_Manager.h" />
     <ClInclude Include="src\Managers\Input_Manager.h" />
     <ClInclude Include="src\Network\Client.h" />
