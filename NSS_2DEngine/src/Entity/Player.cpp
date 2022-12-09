@@ -13,6 +13,11 @@ Player::Player(sf::Vector2f position, sf::Texture* texture) : Entity(position, t
 
 	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::D,
 		std::bind(&Player::MoveRight, this), std::bind(&Player::Stop, this));
+
+	Input_Manager::GetInstance()->AddMouseBinding(sf::Mouse::Left, 
+		std::bind(&Player::Click, this), std::bind(&Player::Click, this));
+
+	speed = 0.2f;
 }
 
 Player::~Player()
@@ -22,7 +27,8 @@ Player::~Player()
 
 void Player::SetVelocity(sf::Vector2f vel)
 {
-	velocity = vel;
+	velocity.x = vel.x * speed;
+	velocity.y = vel.y * speed;
 }
 
 void Player::MoveUp()
@@ -48,4 +54,9 @@ void Player::MoveLeft()
 void Player::Stop()
 {
 	SetVelocity(sf::Vector2f(0, 0));
+}
+
+void Player::Click()
+{
+
 }

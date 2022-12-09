@@ -4,6 +4,8 @@
 #include "../Managers/Input_Manager.h"
 #include "../Entity/Entity.h"
 
+#include <iostream>
+
 class Player : public Entity
 {
 public:
@@ -18,8 +20,10 @@ public:
 	void MoveLeft();
 	void Stop();
 
-private:
+	void Click();
 
+private:
+	float speed;
 };
 
 #endif
