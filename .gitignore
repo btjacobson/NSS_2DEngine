@@ -36,10 +36,7 @@
 *.lock
 *.ipch
 *.*db
-*.*vcxproj*
 *.db*
-*.suo
-*.sln
 *.*log
 *.*exe*
 *.*ilk*
