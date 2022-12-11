@@ -1,23 +1,19 @@
 #include "Player.h"
 
+#include <iostream>
+
 Player::Player(sf::Vector2f position, sf::Texture* texture) : Entity(position, texture)
 {
-	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::W,
-		std::bind(&Player::MoveUp, this), std::bind(&Player::Stop, this));
+	speed = 200.0f;
 
-	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::A,
-		std::bind(&Player::MoveLeft, this), std::bind(&Player::Stop, this));
+	textureRect.left = 0;
+	textureRect.top = 0;
+	textureRect.width = 200;
+	textureRect.height = 200;
 
-	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::S,
-		std::bind(&Player::MoveDown, this), std::bind(&Player::Stop, this));
+	sprite.setTextureRect(textureRect);
 
-	Input_Manager::GetInstance()->AddKeyboardBinding(sf::Keyboard::D,
-		std::bind(&Player::MoveRight, this), std::bind(&Player::Stop, this));
-
-	Input_Manager::GetInstance()->AddMouseBinding(sf::Mouse::Left, 
-		std::bind(&Player::Click, this), std::bind(&Player::Click, this));
-
-	speed = 0.2f;
+	Input_Manager::GetInstance()->AddMouseBinding(sf::Mouse::Button::Left, std::bind(&Player::Attack, this), true);
 }
 
 Player::~Player()
@@ -27,28 +23,27 @@ Player::~Player()
 
 void Player::SetVelocity(sf::Vector2f vel)
 {
-	velocity.x = vel.x * speed;
-	velocity.y = vel.y * speed;
+	velocity = vel;
 }
 
 void Player::MoveUp()
 {
-	SetVelocity(sf::Vector2f(0, -1));
+	velocity.y = -1;
 }
 
 void Player::MoveDown()
 {
-	SetVelocity(sf::Vector2f(0, 1));
+	velocity.y = 1;
 }
 
 void Player::MoveRight()
 {
-	SetVelocity(sf::Vector2f(1, 0));
+	velocity.x = 1;
 }
 
 void Player::MoveLeft()
 {
-	SetVelocity(sf::Vector2f(-1, 0));
+	velocity.x = -1;
 }
 
 void Player::Stop()
@@ -56,7 +51,15 @@ void Player::Stop()
 	SetVelocity(sf::Vector2f(0, 0));
 }
 
-void Player::Click()
+void Player::Attack()
 {
+	textureRect.left += 16;
+	if (textureRect.left > 864)
+	{
+		textureRect.left = 0;
+	}
 
+	sprite.setTextureRect(textureRect);
+
+	std::cout << "Left: " << textureRect.left << std::endl;
 }

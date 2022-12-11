@@ -13,6 +13,7 @@ public:
 	~Map();
 
 	void BuildMap();
+	void LoadTextures();
 	void LoadMapFromFile(std::string filePath);
 	void Update(float dt);
 	void Draw(sf::RenderWindow* window);

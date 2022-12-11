@@ -20,10 +20,10 @@ public:
 	void MoveLeft();
 	void Stop();
 
-	void Click();
+	void Attack();
 
 private:
-	float speed;
+
 };
 
 #endif

@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-App::App() : window(sf::VideoMode(800, 600), "Test")
+App::App() : window(sf::VideoMode(1920, 1080), "Test")
 {
 
 }
@@ -25,6 +25,7 @@ void App::Run()
 void App::HandleEvents()
 {
 	sf::Event event;
+
 	while (window.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)

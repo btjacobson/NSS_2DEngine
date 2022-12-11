@@ -110,6 +110,11 @@ void Input_Manager::HandleEvents(sf::Event newEvent)
 	{
 		if (newEvent.type == sf::Event::KeyPressed)
 		{
+			if (sf::Keyboard::isKeyPressed(newEvent.key.code))
+			{
+				key->second->pressedCallback();
+			}
+
 			if (key->second->pressedCallback != nullptr)
 			{
 				key->second->pressedCallback();

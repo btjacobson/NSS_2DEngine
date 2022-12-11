@@ -30,6 +30,7 @@ private:
 	Map map;
 	Camera camera;
 	Client* client;
+	Player* player;
 
 	sf::Clock clock;
 	sf::Thread* commandThread;

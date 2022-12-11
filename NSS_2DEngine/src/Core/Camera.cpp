@@ -2,7 +2,7 @@
 
 Camera::Camera() : entity(nullptr)
 {
-	view.setSize(200, 200);
+	view.setSize(480, 270);
 }
 
 Camera::~Camera()

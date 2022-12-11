@@ -17,12 +17,12 @@ void Game_State::Init()
 {
 	SetActive(true);
 
-	Asset_Manager::GetInstance()->AddTexture("dirt_tile", "../assets/textures/tiles/dirt_tile.png");
-	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/sprites/player.png");
+	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/idle.png");
 	Entity_Manager::GetInstance()->AddEntity<Player>("player", sf::Vector2f(200, 200), Asset_Manager::GetInstance()->GetTexture("player"));
-	
+	player = (Player*)Entity_Manager::GetInstance()->GetEntity("player");
+
 	map.BuildMap();
-	camera.FollowTarget(Entity_Manager::GetInstance()->GetEntity("player"));
+	camera.FollowTarget(player);
 }
 
 void Game_State::Cleanup()
@@ -33,13 +33,32 @@ void Game_State::Cleanup()
 	Input_Manager::GetInstance()->ClearMouseBindings();
 
 	delete client;
+
 	client = nullptr;
+	player = nullptr;
 }
 
 void Game_State::Update(float dt)
 {
 	map.Update(dt);
 	camera.Update(dt);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		player->MoveUp();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		player->MoveLeft();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		player->MoveDown();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		player->MoveRight();
+	}
 }
 
 void Game_State::Draw(sf::RenderWindow* window)

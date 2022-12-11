@@ -4,6 +4,8 @@ Map::Map(sf::Vector2i mapSize, int tileSize)
 {
 	this->mapSize = mapSize;
 	this->tileSize = tileSize;
+
+	LoadTextures();
 }
 
 Map::~Map()
@@ -23,9 +25,23 @@ void Map::BuildMap()
 	{
 		for (int y = 0; y < mapSize.y; ++y)
 		{
-			tiles.push_back(new Tile(sf::Vector2f(x * tileSize, y * tileSize), Asset_Manager::GetInstance()->GetTexture("dirt_tile")));
+			if ((x == 0 || y == 0) || (x == mapSize.x - 1 || y == mapSize.y - 1))
+			{
+				tiles.push_back(new Tile(sf::Vector2f(x * tileSize, y * tileSize), Asset_Manager::GetInstance()->GetTexture("water_tile")));
+			}
+			else 
+			{
+				tiles.push_back(new Tile(sf::Vector2f(x * tileSize, y * tileSize), Asset_Manager::GetInstance()->GetTexture("dirt_tile")));
+			}
 		}
 	}
+}
+
+void Map::LoadTextures()
+{
+	Asset_Manager::GetInstance()->AddTexture("dirt_tile", "../assets/textures/tiles/dirt_tile.png");
+	Asset_Manager::GetInstance()->AddTexture("water_tile", "../assets/textures/tiles/water_tile.png");
+	Asset_Manager::GetInstance()->AddTexture("grass_tile", "../assets/textures/tiles/grass_tile.png");
 }
 
 void Map::LoadMapFromFile(std::string filePath)

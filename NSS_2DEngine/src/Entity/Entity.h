@@ -17,8 +17,10 @@ public:
 
 protected:
 	sf::Sprite sprite;
+	sf::IntRect textureRect;
 
 	sf::Vector2f velocity;
+	float speed;
 };
 
 #endif
