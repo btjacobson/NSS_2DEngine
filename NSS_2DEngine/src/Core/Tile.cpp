@@ -4,6 +4,7 @@ Tile::Tile(sf::Vector2f position, sf::Texture* texture, bool collision)
 {
     sprite.setTexture(*texture);
     sprite.setPosition(position);
+    collisionEnabled = collision;
 }
 
 Tile::~Tile()

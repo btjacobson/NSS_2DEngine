@@ -27,7 +27,7 @@ void Map::BuildMap()
 		{
 			if ((x == 0 || y == 0) || (x == mapSize.x - 1 || y == mapSize.y - 1))
 			{
-				tiles.push_back(new Tile(sf::Vector2f(x * tileSize, y * tileSize), Asset_Manager::GetInstance()->GetTexture("water_tile")));
+				tiles.push_back(new Tile(sf::Vector2f(x * tileSize, y * tileSize), Asset_Manager::GetInstance()->GetTexture("water_tile"), true));
 			}
 			else 
 			{
@@ -63,4 +63,22 @@ void Map::Draw(sf::RenderWindow* window)
 	{
 		window->draw(*tile->GetSprite());
 	}
+}
+
+bool Map::GetCollisionForTile(int x, int y)
+{
+	bool found = false;
+	for (auto& tile : tiles)
+	{
+		sf::IntRect tileRect = tile->GetSprite()->getTextureRect();
+		tileRect.left += tile->GetSprite()->getPosition().x;
+		tileRect.top += tile->GetSprite()->getPosition().y;
+
+		if (tileRect.contains(x, y))
+		{
+			found = tile->GetCollisionEnabled();
+		}
+	}
+
+	return found;
 }

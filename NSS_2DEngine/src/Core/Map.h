@@ -18,6 +18,8 @@ public:
 	void Update(float dt);
 	void Draw(sf::RenderWindow* window);
 
+	bool GetCollisionForTile(int x, int y);
+
 private:
 	sf::Vector2i mapSize;
 	std::vector<Tile*> tiles;

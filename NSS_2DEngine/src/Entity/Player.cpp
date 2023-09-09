@@ -8,12 +8,12 @@ Player::Player(sf::Vector2f position, sf::Texture* texture) : Entity(position, t
 
 	textureRect.left = 0;
 	textureRect.top = 0;
-	textureRect.width = 200;
-	textureRect.height = 200;
+	textureRect.width = 32;
+	textureRect.height = 48;
 
 	sprite.setTextureRect(textureRect);
 
-	Input_Manager::GetInstance()->AddMouseBinding(sf::Mouse::Button::Left, std::bind(&Player::Attack, this), true);
+	//Input_Manager::GetInstance()->AddMouseBinding(sf::Mouse::Button::Left, std::bind(&Player::Attack, this), true);
 }
 
 Player::~Player()

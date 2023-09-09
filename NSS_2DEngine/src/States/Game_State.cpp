@@ -17,7 +17,7 @@ void Game_State::Init()
 {
 	SetActive(true);
 
-	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/idle.png");
+	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/player.png");
 	Entity_Manager::GetInstance()->AddEntity<Player>("player", sf::Vector2f(200, 200), Asset_Manager::GetInstance()->GetTexture("player"));
 	player = (Player*)Entity_Manager::GetInstance()->GetEntity("player");
 
@@ -45,19 +45,31 @@ void Game_State::Update(float dt)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		player->MoveUp();
+		if (!map.GetCollisionForTile(player->GetPosition().x, player->GetPosition().y - 4))
+		{
+			player->MoveUp();
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		player->MoveLeft();
+		if (!map.GetCollisionForTile(player->GetPosition().x - 13, player->GetPosition().y))
+		{
+			player->MoveLeft();
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		player->MoveDown();
+		if (!map.GetCollisionForTile(player->GetPosition().x, player->GetPosition().y + 24))
+		{
+			player->MoveDown();
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		player->MoveRight();
+		if (!map.GetCollisionForTile(player->GetPosition().x + 12, player->GetPosition().y))
+		{
+			player->MoveRight();
+		}
 	}
 }
 
