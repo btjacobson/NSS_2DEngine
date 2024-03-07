@@ -17,7 +17,7 @@ void Game_State::Init()
 {
 	SetActive(true);
 
-	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/player.png");
+	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/idle.png");
 	Entity_Manager::GetInstance()->AddEntity<Player>("player", sf::Vector2f(200, 200), Asset_Manager::GetInstance()->GetTexture("player"));
 	player = (Player*)Entity_Manager::GetInstance()->GetEntity("player");
 

@@ -125,7 +125,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\NULL Stack Studios\NSS_2DEngine\NSS_Shared\include;C:\C++ Libs\SFML-2.5.1 64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\C++ Libs\SFML-2.5.1 64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,6 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Components\AnimatedSprite_Comp.cpp" />
+    <ClCompile Include="src\Components\Collision_Comp.cpp" />
+    <ClCompile Include="src\Components\Transform_Comp.cpp" />
     <ClCompile Include="src\Core\Camera.cpp" />
     <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\Entity\Player.cpp" />
@@ -160,8 +163,12 @@
     <ClCompile Include="src\Core\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components\Base_Comp.h" />
+    <ClInclude Include="src\Components\Collision_Comp.h" />
+    <ClInclude Include="src\Components\Transform_Comp.h" />
     <ClInclude Include="src\Core\App.h" />
     <ClInclude Include="src\Core\Camera.h" />
+    <ClInclude Include="src\Components\AnimatedSprite_Comp.h" />
     <ClInclude Include="src\Entity\Player.h" />
     <ClInclude Include="src\Managers\Asset_Manager.h" />
     <ClInclude Include="src\Gui\Button.h" />

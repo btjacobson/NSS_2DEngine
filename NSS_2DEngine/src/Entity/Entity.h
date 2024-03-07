@@ -6,21 +6,15 @@
 class Entity
 {
 public:
-	Entity(sf::Vector2f position, sf::Texture* texture);
+	Entity();
 	~Entity();
 
+	void AddComponent(Component*);
+	void RemoveComponent();
 	void Update(float dt);
-	virtual void SetVelocity(sf::Vector2f vel) = 0;
-
-	sf::Sprite* GetSprite();
-	sf::Vector2f GetPosition();
 
 protected:
-	sf::Sprite sprite;
-	sf::IntRect textureRect;
 
-	sf::Vector2f velocity;
-	float speed;
 };
 
 #endif

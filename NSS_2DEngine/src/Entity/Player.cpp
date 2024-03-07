@@ -6,10 +6,10 @@ Player::Player(sf::Vector2f position, sf::Texture* texture) : Entity(position, t
 {
 	speed = 200.0f;
 
-	textureRect.left = 0;
-	textureRect.top = 0;
-	textureRect.width = 32;
-	textureRect.height = 48;
+	textureRect.left = 1;
+	textureRect.top = 1;
+	textureRect.width = 96;
+	textureRect.height = 64;
 
 	sprite.setTextureRect(textureRect);
 
