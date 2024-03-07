@@ -6,6 +6,9 @@
 #include "../Core/Camera.h"
 #include "../Network/Client.h"
 #include "../Entity/Player.h"
+#include "../Systems/MovementSystem.h"
+
+#include "../Components/Transform_Comp.h"
 
 class Game_State : public State
 {

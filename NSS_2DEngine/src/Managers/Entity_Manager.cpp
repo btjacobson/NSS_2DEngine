@@ -49,10 +49,7 @@ void Entity_Manager::Update(float dt)
 {
     if (entities.size() > 0)
     {
-        for (auto& entity : entities)
-        {
-            entity.second->Update(dt);
-        }
+
     }
 }
 
@@ -60,10 +57,7 @@ void Entity_Manager::Draw(sf::RenderWindow* window)
 {
     if (entities.size() > 0)
     {
-        for (auto& entity : entities)
-        {
-            window->draw(*entity.second->GetSprite());
-        }
+
     }
 }
 
@@ -77,4 +71,9 @@ Entity* Entity_Manager::GetEntity(std::string name)
     {
         return nullptr;
     }
+}
+
+std::unordered_map<std::string, Entity*>* Entity_Manager::GetEntities()
+{
+    return &entities;
 }

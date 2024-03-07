@@ -10,15 +10,14 @@
 class Entity_Manager
 {
 public:
-
 	static Entity_Manager* GetInstance();
 
 	~Entity_Manager();
 	
 	template<class T>
-	void AddEntity(std::string name, sf::Vector2f position, sf::Texture* texture)
+	void AddEntity(std::string name)
 	{
-		T* tEntity = new T(position, texture);
+		T* tEntity = new T();
 
 		if (tEntity && entities.find(name) == entities.end())
 		{
@@ -32,6 +31,7 @@ public:
 	void Draw(sf::RenderWindow* window);
 
 	Entity* GetEntity(std::string name);
+	std::unordered_map<std::string, Entity*>* GetEntities();
 
 private:
 	Entity_Manager() = default;

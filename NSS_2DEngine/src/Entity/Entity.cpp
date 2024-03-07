@@ -2,36 +2,22 @@
 
 #include "../Utils/NSS_Math.h"
 
-Entity::Entity(sf::Vector2f position, sf::Texture* texture)
+Entity::Entity()
 {
-    sprite.setPosition(position);
-    sprite.setTexture(*texture);
-    sprite.setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
-    velocity = sf::Vector2f();
-    textureRect = sf::IntRect();
-    speed = 0.0f;
+
 }
 
 Entity::~Entity()
 {
+	for (auto component : _components)
+	{
+		delete component;
+	}
 
+	_components.clear();
 }
 
-void Entity::Update(float dt)
+void Entity::AddComponent(BaseComp* component)
 {
-    velocity = NormalizeVector(velocity);
-    velocity.x = (velocity.x * speed) * dt;
-    velocity.y = (velocity.y * speed) * dt;
-
-    sprite.move(velocity);
-}
-
-sf::Sprite* Entity::GetSprite()
-{
-    return &sprite;
-}
-
-sf::Vector2f Entity::GetPosition()
-{
-    return sprite.getPosition();
+	_components.push_back(component);
 }

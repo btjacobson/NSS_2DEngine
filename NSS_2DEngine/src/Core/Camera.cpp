@@ -14,7 +14,7 @@ void Camera::Update(float dt)
 {
 	if (entity)
 	{
-		view.setCenter(entity->GetPosition());
+
 	}
 }
 

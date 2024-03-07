@@ -9,10 +9,8 @@
 class Player : public Entity
 {
 public:
-	Player(sf::Vector2f position, sf::Texture* texture);
+	Player();
 	~Player();
-
-	void SetVelocity(sf::Vector2f vel) override;
 
 	void MoveUp();
 	void MoveDown();

@@ -161,6 +161,7 @@
     <ClCompile Include="src\Managers\State_Manager.cpp" />
     <ClCompile Include="src\Core\App.cpp" />
     <ClCompile Include="src\Core\main.cpp" />
+    <ClCompile Include="src\Systems\MovementSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\Base_Comp.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="src\Core\Tile.h" />
     <ClInclude Include="src\Core\Timer.h" />
     <ClInclude Include="src\Managers\Timer_Manager.h" />
+    <ClInclude Include="src\Systems\MovementSystem.h" />
     <ClInclude Include="src\Utils\NSS_Math.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
