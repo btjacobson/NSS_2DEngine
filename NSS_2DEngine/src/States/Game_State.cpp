@@ -45,19 +45,6 @@ void Game_State::Update(float dt)
 	map.Update(dt);
 	MovementSystem::GetInstance()->Update(*Entity_Manager::GetInstance()->GetEntities());
 	camera.Update(dt);
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-	}
 }
 
 void Game_State::Draw(sf::RenderWindow* window)
