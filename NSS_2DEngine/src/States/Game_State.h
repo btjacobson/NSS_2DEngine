@@ -5,7 +5,6 @@
 #include "../Core/Map.h"
 #include "../Core/Camera.h"
 #include "../Network/Client.h"
-#include "../Entity/Player.h"
 #include "../Systems/MovementSystem.h"
 
 #include "../Components/Transform_Comp.h"
@@ -33,7 +32,7 @@ private:
 	Map map;
 	Camera camera;
 	Client* client;
-	Player* player;
+	Entity* player;
 
 	sf::Clock clock;
 	sf::Thread* commandThread;

@@ -75,9 +75,6 @@
     <ClCompile Include="src\Network\Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entity\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Components\AnimatedSprite_Comp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Systems\MovementSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Components\Controller_Comp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,9 +152,6 @@
     <ClInclude Include="src\Network\Client.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entity\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Utils\NSS_Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -171,6 +168,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Systems\MovementSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components\Controller_Comp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

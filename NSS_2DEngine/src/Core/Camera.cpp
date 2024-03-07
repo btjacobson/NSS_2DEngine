@@ -14,7 +14,11 @@ void Camera::Update(float dt)
 {
 	if (entity)
 	{
-		view.setCenter(entity->GetComponent<TransformComp>()->GetPosition());
+		TransformComp* comp = entity->GetComponent<TransformComp>();
+		if (comp)
+		{
+			view.setCenter(comp->GetPosition());
+		}
 	}
 }
 

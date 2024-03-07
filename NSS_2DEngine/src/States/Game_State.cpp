@@ -18,8 +18,9 @@ void Game_State::Init()
 	SetActive(true);
 
 	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/idle.png");
-	Entity_Manager::GetInstance()->AddEntity<Player>("player");
-	player = (Player*)Entity_Manager::GetInstance()->GetEntity("player");
+	Entity_Manager::GetInstance()->AddEntity<Entity>("player");
+	
+	player = (Entity*)Entity_Manager::GetInstance()->GetEntity("player");
 	player->AddComponent(new TransformComp(100, 100));
 
 	map.BuildMap();
