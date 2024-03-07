@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-App::App() : window(sf::VideoMode(1920, 1080), "Test")
+App::App() : window(sf::VideoMode(800, 600), "Test")
 {
 
 }

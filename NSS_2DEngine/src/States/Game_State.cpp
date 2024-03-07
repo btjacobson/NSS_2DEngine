@@ -20,7 +20,7 @@ void Game_State::Init()
 	Asset_Manager::GetInstance()->AddTexture("player", "../assets/textures/entity sprites/player/idle.png");
 	Entity_Manager::GetInstance()->AddEntity<Player>("player");
 	player = (Player*)Entity_Manager::GetInstance()->GetEntity("player");
-	player->AddComponent(new TransformComp(0, 0));
+	player->AddComponent(new TransformComp(100, 100));
 
 	map.BuildMap();
 	camera.FollowTarget(player);
@@ -42,8 +42,8 @@ void Game_State::Cleanup()
 void Game_State::Update(float dt)
 {
 	map.Update(dt);
-	camera.Update(dt);
 	MovementSystem::GetInstance()->Update(*Entity_Manager::GetInstance()->GetEntities());
+	camera.Update(dt);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{

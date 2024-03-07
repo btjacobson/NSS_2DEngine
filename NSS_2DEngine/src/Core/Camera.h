@@ -5,6 +5,8 @@
 
 #include "../Entity/Entity.h"
 
+#include "../Components/Transform_Comp.h"
+
 class Camera
 {
 public:
