@@ -8,7 +8,7 @@
 class AnimatedSpriteComp : public BaseComp
 {
 public:
-	AnimatedSpriteComp(float frameTime, bool loop, Entity* owner);
+	AnimatedSpriteComp(float frameTime, bool loop);
 	~AnimatedSpriteComp();
 
 	void Play(float dt);

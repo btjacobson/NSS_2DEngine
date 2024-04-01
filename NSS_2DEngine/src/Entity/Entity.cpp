@@ -19,5 +19,6 @@ Entity::~Entity()
 
 void Entity::AddComponent(BaseComp* component)
 {
+	component->SetOwner(this);
 	_components.push_back(component);
 }

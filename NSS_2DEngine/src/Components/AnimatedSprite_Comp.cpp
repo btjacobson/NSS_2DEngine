@@ -1,6 +1,6 @@
 #include "AnimatedSprite_Comp.h"
 
-AnimatedSpriteComp::AnimatedSpriteComp(float frameTime, bool loop, Entity* owner) : BaseComp(owner)
+AnimatedSpriteComp::AnimatedSpriteComp(float frameTime, bool loop)
 {
 
 }

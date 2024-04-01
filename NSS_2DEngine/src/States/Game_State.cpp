@@ -21,8 +21,8 @@ void Game_State::Init()
 	Entity_Manager::GetInstance()->AddEntity<Entity>("player");
 	
 	player = (Entity*)Entity_Manager::GetInstance()->GetEntity("player");
-	player->AddComponent(new TransformComp(100, 100, player));
-	player->AddComponent(new ControllerComp(player));
+	player->AddComponent(new TransformComp(100, 100));
+	player->AddComponent(new ControllerComp());
 
 	map.BuildMap();
 	camera.FollowTarget(player);

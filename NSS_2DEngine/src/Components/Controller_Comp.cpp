@@ -2,7 +2,7 @@
 
 #include "../Entity/Entity.h"
 
-ControllerComp::ControllerComp(Entity* owner) : BaseComp(owner)
+ControllerComp::ControllerComp()
 {
 	Input_Manager::GetInstance()->AddKeyboardBinding(
 		sf::Keyboard::W, 

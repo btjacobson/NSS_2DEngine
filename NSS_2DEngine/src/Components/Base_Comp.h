@@ -6,15 +6,19 @@
 class BaseComp
 {
 public:
-	BaseComp(class Entity* owner)
+	BaseComp()
 	{
 		_id = std::rand() % (999999 - 100000 + 1) + 100000;
-		_owner = owner;
 	}
 
 	inline int GetId()
 	{
 		return _id;
+	}
+
+	virtual void SetOwner(class Entity* owner)
+	{
+		_owner = owner;
 	}
 
 protected:

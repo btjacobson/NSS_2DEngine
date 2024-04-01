@@ -8,7 +8,7 @@
 class TransformComp : public BaseComp
 {
 public:
-	TransformComp(float posX, float posY, Entity* owner);
+	TransformComp(float posX, float posY);
 	~TransformComp();
 
 	void SetPosition(float x, float y);

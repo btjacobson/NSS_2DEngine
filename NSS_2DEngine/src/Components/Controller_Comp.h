@@ -11,7 +11,7 @@
 class ControllerComp : public BaseComp
 {
 public:
-	ControllerComp(class Entity* owner);
+	ControllerComp();
 	~ControllerComp();
 
 	void MoveRight();

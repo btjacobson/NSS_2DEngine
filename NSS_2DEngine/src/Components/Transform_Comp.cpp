@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-TransformComp::TransformComp(float posX, float posY, Entity* owner) : BaseComp(owner)
+TransformComp::TransformComp(float posX, float posY)
 {
 }
 
