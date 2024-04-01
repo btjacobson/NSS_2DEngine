@@ -8,7 +8,7 @@
 class TransformComp : public BaseComp
 {
 public:
-	TransformComp(float posX, float posY);
+	TransformComp(float posX, float posY, Entity* owner);
 	~TransformComp();
 
 	void SetPosition(float x, float y);
@@ -16,6 +16,7 @@ public:
 	void SetRotation(float rotation);
 	void SetScale(float x, float y);
 	void SetScale(sf::Vector2f scale);
+	void Move(sf::Vector2f movement, float deltaTime);
 
 	sf::Vector2f GetPosition();
 	float GetRotation();

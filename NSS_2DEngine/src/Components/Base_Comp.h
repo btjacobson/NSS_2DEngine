@@ -6,9 +6,10 @@
 class BaseComp
 {
 public:
-	BaseComp()
+	BaseComp(class Entity* owner)
 	{
 		_id = std::rand() % (999999 - 100000 + 1) + 100000;
+		_owner = owner;
 	}
 
 	inline int GetId()
@@ -16,8 +17,9 @@ public:
 		return _id;
 	}
 
-private:
+protected:
 	int _id;
+	class Entity* _owner;
 };
 
 #endif

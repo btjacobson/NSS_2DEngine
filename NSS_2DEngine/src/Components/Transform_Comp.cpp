@@ -1,6 +1,8 @@
 #include "Transform_Comp.h"
 
-TransformComp::TransformComp(float posX, float posY)
+#include <iostream>
+
+TransformComp::TransformComp(float posX, float posY, Entity* owner) : BaseComp(owner)
 {
 }
 
@@ -26,6 +28,14 @@ void TransformComp::SetScale(float x, float y)
 
 void TransformComp::SetScale(sf::Vector2f scale)
 {
+}
+
+void TransformComp::Move(sf::Vector2f movement, float deltaTime)
+{
+	_position.x += movement.x * deltaTime;
+	_position.y += movement.y * deltaTime;
+
+	std::cout << _position.x << ", " << _position.y << std::endl;
 }
 
 sf::Vector2f TransformComp::GetPosition()

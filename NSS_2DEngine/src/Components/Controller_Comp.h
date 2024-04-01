@@ -1,13 +1,25 @@
 #ifndef CONTROLLER_COMP_H
 #define CONTROLLER_COMP_H
 
-#include "Base_Comp.h"
+#include <iostream>
 
-class ControllerComp
+#include "../Managers/Input_Manager.h"
+
+#include "Base_Comp.h"
+#include "Transform_Comp.h"
+
+class ControllerComp : public BaseComp
 {
 public:
-	ControllerComp();
+	ControllerComp(class Entity* owner);
 	~ControllerComp();
+
+	void MoveRight();
+	void MoveLeft();
+	void MoveUp();
+	void MoveDown();
+	void Stop();
+	void Attack();
 
 private:
 

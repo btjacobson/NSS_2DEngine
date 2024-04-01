@@ -8,7 +8,7 @@
 class CollisionComp : public BaseComp
 {
 public:
-	CollisionComp(float x, float y, float width, float height);
+	CollisionComp(float x, float y, float width, float height, Entity* owner);
 	~CollisionComp();
 
 private:

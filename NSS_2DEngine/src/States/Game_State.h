@@ -8,6 +8,7 @@
 #include "../Systems/MovementSystem.h"
 
 #include "../Components/Transform_Comp.h"
+#include "../Components/Controller_Comp.h"
 
 class Game_State : public State
 {
