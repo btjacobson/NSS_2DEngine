@@ -22,3 +22,11 @@ void Entity::AddComponent(BaseComp* component)
 	component->SetOwner(this);
 	_components.push_back(component);
 }
+
+void Entity::UpdateComponents(float dt)
+{
+	for (auto& component : _components)
+	{
+		component->Update(dt);
+	}
+}

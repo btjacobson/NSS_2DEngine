@@ -49,7 +49,10 @@ void Entity_Manager::Update(float dt)
 {
     if (entities.size() > 0)
     {
-
+        for (auto& entity : entities)
+        {
+            entity.second->UpdateComponents(dt);
+        }
     }
 }
 

@@ -23,6 +23,7 @@ void Game_State::Init()
 	player = (Entity*)Entity_Manager::GetInstance()->GetEntity("player");
 	player->AddComponent(new TransformComp(100, 100));
 	player->AddComponent(new ControllerComp());
+	player->AddComponent(new PhysicsComp(5, 0.5));
 
 	map.BuildMap();
 	camera.FollowTarget(player);
@@ -44,7 +45,7 @@ void Game_State::Cleanup()
 void Game_State::Update(float dt)
 {
 	map.Update(dt);
-	MovementSystem::GetInstance()->Update(*Entity_Manager::GetInstance()->GetEntities());
+	Entity_Manager::GetInstance()->Update(dt);
 	camera.Update(dt);
 }
 

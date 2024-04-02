@@ -5,10 +5,10 @@
 #include "../Core/Map.h"
 #include "../Core/Camera.h"
 #include "../Network/Client.h"
-#include "../Systems/MovementSystem.h"
 
 #include "../Components/Transform_Comp.h"
 #include "../Components/Controller_Comp.h"
+#include "../Components/Physics_Comp.h"
 
 class Game_State : public State
 {

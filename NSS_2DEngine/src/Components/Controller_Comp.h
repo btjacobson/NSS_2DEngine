@@ -6,7 +6,7 @@
 #include "../Managers/Input_Manager.h"
 
 #include "Base_Comp.h"
-#include "Transform_Comp.h"
+#include "Physics_Comp.h"
 
 class ControllerComp : public BaseComp
 {

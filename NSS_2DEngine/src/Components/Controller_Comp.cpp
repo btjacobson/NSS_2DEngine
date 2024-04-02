@@ -35,35 +35,30 @@ ControllerComp::~ControllerComp()
 
 void ControllerComp::MoveRight()
 {
-	auto tComponent = _owner->GetComponent<TransformComp>();
-	tComponent->Move({ 1, 0 }, 1);
+	auto tComponent = _owner->GetComponent<PhysicsComp>();
 }
 
 void ControllerComp::MoveLeft()
 {
-	auto tComponent = _owner->GetComponent<TransformComp>();
-	tComponent->Move({ -1, 0 }, 1);
+	auto tComponent = _owner->GetComponent<PhysicsComp>();
 }
 
 void ControllerComp::MoveUp()
 {
 	std::cout << "MoveUp" << std::endl;
-	auto tComponent = _owner->GetComponent<TransformComp>();
-	tComponent->Move({ 0, -1 }, 1);
+	auto tComponent = _owner->GetComponent<PhysicsComp>();
 }
 
 void ControllerComp::MoveDown()
 {
 	std::cout << "MoveDown" << std::endl;
-	auto tComponent = _owner->GetComponent<TransformComp>();
-	tComponent->Move({ 0, 1 }, 1);
+	auto tComponent = _owner->GetComponent<PhysicsComp>();
 }
 
 void ControllerComp::Stop()
 {
 	std::cout << "Stop" << std::endl;
-	auto tComponent = _owner->GetComponent<TransformComp>();
-	tComponent->Move({ 0, 0 }, 1);
+	auto tComponent = _owner->GetComponent<PhysicsComp>();
 }
 
 void ControllerComp::Attack()

@@ -21,6 +21,8 @@ public:
 		_owner = owner;
 	}
 
+	virtual void Update(float dt) { }
+
 protected:
 	int _id;
 	class Entity* _owner;

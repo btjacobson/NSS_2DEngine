@@ -14,6 +14,7 @@ public:
 	~Entity();
 
 	void AddComponent(BaseComp* component);
+	void UpdateComponents(float dt);
 
 	template<typename T>
 	void RemoveComponent()
