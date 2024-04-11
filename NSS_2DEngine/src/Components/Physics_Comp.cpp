@@ -1,5 +1,7 @@
 #include "Physics_Comp.h"
 
+#include <iostream>
+
 #include "../Entity/Entity.h"
 
 PhysicsComp::PhysicsComp(float maxVelocity, float acceleration)
@@ -11,6 +13,7 @@ PhysicsComp::PhysicsComp(float maxVelocity, float acceleration)
 	_maxVelocity.y = maxVelocity;
 
 	_velocity = sf::Vector2f(0, 0);
+	_direction = sf::Vector2f(0, 0);
 }
 
 PhysicsComp::~PhysicsComp()
@@ -20,7 +23,17 @@ PhysicsComp::~PhysicsComp()
 
 void PhysicsComp::Update(float dt)
 {
-	_velocity += _acceleration;
+	if (_direction.x != 0)
+	{
+		_velocity.x *= _direction.x;
+		_velocity += _acceleration;
+	}
+	
+	if (_direction.y != 0)
+	{
+		_velocity.y *= _direction.y;
+		_velocity += _acceleration;
+	}
 
 	if (_velocity.x > _maxVelocity.x)
 	{
@@ -32,5 +45,10 @@ void PhysicsComp::Update(float dt)
 		_velocity.y = _maxVelocity.y;
 	}
 
-	_owner->GetComponent<TransformComp>()->Move(_velocity *= dt);
+	_owner->GetComponent<TransformComp>()->Move(_velocity * dt);
+}
+
+void PhysicsComp::SetDirection(sf::Vector2f direction)
+{
+	_direction = direction;
 }

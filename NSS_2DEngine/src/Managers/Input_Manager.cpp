@@ -110,14 +110,10 @@ void Input_Manager::HandleEvents(sf::Event newEvent)
 	{
 		if (newEvent.type == sf::Event::KeyPressed)
 		{
-			if (sf::Keyboard::isKeyPressed(newEvent.key.code))
+			if (sf::Keyboard::isKeyPressed(newEvent.key.code) || key->second->pressedCallback != nullptr)
 			{
 				key->second->pressedCallback();
-			}
-
-			if (key->second->pressedCallback != nullptr)
-			{
-				key->second->pressedCallback();
+				return;
 			}
 		}
 		else if (newEvent.type == sf::Event::KeyReleased)
@@ -125,6 +121,7 @@ void Input_Manager::HandleEvents(sf::Event newEvent)
 			if (key->second->releasedCallback != nullptr)
 			{
 				key->second->releasedCallback();
+				return;
 			}
 		}
 	}
@@ -137,6 +134,7 @@ void Input_Manager::HandleEvents(sf::Event newEvent)
 			if (button->second->pressedCallback != nullptr)
 			{
 				button->second->pressedCallback();
+				return;
 			}
 		}
 		else if (newEvent.type == sf::Event::MouseButtonReleased)
@@ -144,6 +142,7 @@ void Input_Manager::HandleEvents(sf::Event newEvent)
 			if (button->second->releasedCallback != nullptr)
 			{
 				button->second->releasedCallback();
+				return;
 			}
 		}
 	}

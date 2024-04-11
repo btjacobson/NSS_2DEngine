@@ -13,11 +13,13 @@ public:
 	~PhysicsComp();
 
 	void Update(float dt) override;
+	void SetDirection(sf::Vector2f direction);
 
 private:
 	sf::Vector2f _acceleration;
 	sf::Vector2f _maxVelocity;
 	sf::Vector2f _velocity;
+	sf::Vector2f _direction;
 
 };
 
