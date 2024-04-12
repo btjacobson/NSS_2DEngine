@@ -35,7 +35,7 @@ ControllerComp::~ControllerComp()
 
 void ControllerComp::MoveRight()
 {
-	auto tComponent = _owner->GetComponent<PhysicsComp>();
+	PhysicsComp* tComponent = _owner->GetComponent<PhysicsComp>();
 	if (tComponent)
 	{
 		tComponent->SetDirection(sf::Vector2f(1, 0));
@@ -44,7 +44,7 @@ void ControllerComp::MoveRight()
 
 void ControllerComp::MoveLeft()
 {
-	auto tComponent = _owner->GetComponent<PhysicsComp>();
+	PhysicsComp* tComponent = _owner->GetComponent<PhysicsComp>();
 	if (tComponent)
 	{
 		tComponent->SetDirection(sf::Vector2f(-1, 0));
@@ -53,7 +53,7 @@ void ControllerComp::MoveLeft()
 
 void ControllerComp::MoveUp()
 {
-	auto tComponent = _owner->GetComponent<PhysicsComp>();
+	PhysicsComp* tComponent = _owner->GetComponent<PhysicsComp>();
 	if (tComponent)
 	{
 		tComponent->SetDirection(sf::Vector2f(0, 1));
@@ -62,7 +62,7 @@ void ControllerComp::MoveUp()
 
 void ControllerComp::MoveDown()
 {
-	auto tComponent = _owner->GetComponent<PhysicsComp>();
+	PhysicsComp* tComponent = _owner->GetComponent<PhysicsComp>();
 	if (tComponent)
 	{
 		tComponent->SetDirection(sf::Vector2f(0, -1));
@@ -71,9 +71,11 @@ void ControllerComp::MoveDown()
 
 void ControllerComp::Stop()
 {
-	std::cout << "Stop" << std::endl;
-	auto tComponent = _owner->GetComponent<PhysicsComp>();
-	//tComponent->SetDirection({ 0, 0 });
+	PhysicsComp* tComponent = _owner->GetComponent<PhysicsComp>();
+	if (tComponent)
+	{
+		tComponent->Stop();
+	}
 }
 
 void ControllerComp::Attack()

@@ -39,6 +39,7 @@ void App::HandleEvents()
 
 void App::Update(float dt)
 {
+	Input_Manager::GetInstance()->Update();
 	State_Manager::GetInstance()->Update(dt);
 	GUI_Manager::GetInstance()->Update(dt);
 	Timer_Manager::GetInstance()->Update(dt);

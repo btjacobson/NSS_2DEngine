@@ -36,6 +36,7 @@ public:
 	void RemoveMouseBinding(sf::Mouse::Button button);
 
 	void HandleEvents(sf::Event newEvent);
+	void Update();
 
 private:
 	Input_Manager() = default;
@@ -44,8 +45,10 @@ private:
 
 	static Input_Manager* instance;
 
-	std::unordered_map<sf::Keyboard::Key, InputCallback*> keyboardKeys;
-	std::unordered_map<sf::Mouse::Button, InputCallback*> mouseButtons;
+	std::unordered_map<sf::Keyboard::Key, InputCallback*> _keyboardKeys;
+	std::unordered_map<sf::Mouse::Button, InputCallback*> _mouseButtons;
+	std::unordered_map<sf::Keyboard::Key, sf::Event::EventType> _keyboardEvents;
+	std::unordered_map<sf::Mouse::Button, sf::Event::EventType> _mouseEvents;
 };
 
 #endif

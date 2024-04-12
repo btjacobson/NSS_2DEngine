@@ -21,129 +21,145 @@ Input_Manager::~Input_Manager()
 
 void Input_Manager::AddKeyboardBinding(sf::Keyboard::Key key, std::function<void()> callback, bool pressed)
 {
-	if (keyboardKeys.find(key) == keyboardKeys.end())
+	if (_keyboardKeys.find(key) == _keyboardKeys.end())
 	{
 		if (pressed)
 		{
-			keyboardKeys.insert(std::make_pair(key, new InputCallback(callback, nullptr)));
+			_keyboardKeys.insert(std::make_pair(key, new InputCallback(callback, nullptr)));
 		}
 		else
 		{
-			keyboardKeys.insert(std::make_pair(key, new InputCallback(nullptr, callback)));
+			_keyboardKeys.insert(std::make_pair(key, new InputCallback(nullptr, callback)));
 		}
 	}
 }
 
 void Input_Manager::AddKeyboardBinding(sf::Keyboard::Key key, std::function<void()> pressedCallback, std::function<void()> releasedCallback)
 {
-	if (keyboardKeys.find(key) == keyboardKeys.end())
+	if (_keyboardKeys.find(key) == _keyboardKeys.end())
 	{
-		keyboardKeys.insert(std::make_pair(key, new InputCallback(pressedCallback, releasedCallback)));
+		_keyboardKeys.insert(std::make_pair(key, new InputCallback(pressedCallback, releasedCallback)));
 	}
 }
 
 void Input_Manager::ClearKeyboardBindings()
 {
-	for (auto& keyboardKey : keyboardKeys)
+	for (auto& keyboardKey : _keyboardKeys)
 	{
 		delete keyboardKey.second;
 		keyboardKey.second = nullptr;
 	}
 
-	keyboardKeys.clear();
+	_keyboardKeys.clear();
 }
 
 void Input_Manager::RemoveKeyboardBinding(sf::Keyboard::Key key)
 {
-	if (keyboardKeys.find(key) != keyboardKeys.end())
+	if (_keyboardKeys.find(key) != _keyboardKeys.end())
 	{
-		keyboardKeys.erase(key);
+		_keyboardKeys.erase(key);
 	}
 }
 
 void Input_Manager::AddMouseBinding(sf::Mouse::Button button, std::function<void()> callback, bool pressed)
 {
-	if (mouseButtons.find(button) == mouseButtons.end())
+	if (_mouseButtons.find(button) == _mouseButtons.end())
 	{
 		if (pressed)
 		{
-			mouseButtons.insert(std::make_pair(button, new InputCallback(callback, nullptr)));
+			_mouseButtons.insert(std::make_pair(button, new InputCallback(callback, nullptr)));
 		}
 		else
 		{
-			mouseButtons.insert(std::make_pair(button, new InputCallback(nullptr, callback)));
+			_mouseButtons.insert(std::make_pair(button, new InputCallback(nullptr, callback)));
 		}
 	}
 }
 
 void Input_Manager::AddMouseBinding(sf::Mouse::Button button, std::function<void()> pressedCallback, std::function<void()> releasedCallback)
 {
-	if (mouseButtons.find(button) == mouseButtons.end())
+	if (_mouseButtons.find(button) == _mouseButtons.end())
 	{
-		mouseButtons.insert(std::make_pair(button, new InputCallback(pressedCallback, releasedCallback)));
+		_mouseButtons.insert(std::make_pair(button, new InputCallback(pressedCallback, releasedCallback)));
 	}
 }
 
 void Input_Manager::ClearMouseBindings()
 {
-	for (auto& mouseButton : mouseButtons)
+	for (auto& mouseButton : _mouseButtons)
 	{
 		delete mouseButton.second;
 		mouseButton.second = nullptr;
 	}
 
-	mouseButtons.clear();
+	_mouseButtons.clear();
 }
 
 void Input_Manager::RemoveMouseBinding(sf::Mouse::Button button)
 {
-	if (mouseButtons.find(button) != mouseButtons.end())
+	if (_mouseButtons.find(button) != _mouseButtons.end())
 	{
-		mouseButtons.erase(button);
+		_mouseButtons.erase(button);
 	}
 }
 
 void Input_Manager::HandleEvents(sf::Event newEvent)
 {
-	auto key = keyboardKeys.find(newEvent.key.code);
-	if (key != keyboardKeys.end())
+	if (newEvent.type == sf::Event::KeyPressed || newEvent.type == sf::Event::KeyReleased)
 	{
-		if (newEvent.type == sf::Event::KeyPressed)
+		auto key = _keyboardEvents.find(newEvent.key.code);
+		if (key != _keyboardEvents.end())
 		{
-			if (sf::Keyboard::isKeyPressed(newEvent.key.code) || key->second->pressedCallback != nullptr)
-			{
-				key->second->pressedCallback();
-				return;
-			}
+			key->second = newEvent.type;
 		}
-		else if (newEvent.type == sf::Event::KeyReleased)
+		else
 		{
-			if (key->second->releasedCallback != nullptr)
-			{
-				key->second->releasedCallback();
-				return;
-			}
+			_keyboardEvents.emplace(std::pair(newEvent.key.code, newEvent.type));
 		}
 	}
 
-	auto button = mouseButtons.find(newEvent.mouseButton.button);
-	if (button != mouseButtons.end())
+	/*if (newEvent.type == sf::Event::MouseButtonPressed || newEvent.type == sf::Event::MouseButtonReleased)
 	{
-		if (newEvent.type == sf::Event::MouseButtonPressed)
+		auto button = _mouseEvents.find(newEvent.mouseButton.button);
+		if (button != _mouseEvents.end())
 		{
-			if (button->second->pressedCallback != nullptr)
-			{
-				button->second->pressedCallback();
-				return;
-			}
+			button->second = newEvent.type;
 		}
-		else if (newEvent.type == sf::Event::MouseButtonReleased)
+		else
 		{
-			if (button->second->releasedCallback != nullptr)
+			_mouseEvents.emplace(std::pair(newEvent.mouseButton.button, newEvent.type));
+		}
+	}*/
+}
+
+void Input_Manager::Update()
+{
+	for (auto it = _keyboardEvents.begin(); it != _keyboardEvents.end();)
+	{
+		sf::Keyboard::Key keyEvent = it->first;
+		sf::Event::EventType typeEvent = it->second;
+
+		auto key = _keyboardKeys.find(keyEvent);
+		if (key != _keyboardKeys.end())
+		{
+			switch (typeEvent)
 			{
-				button->second->releasedCallback();
-				return;
+			case sf::Event::KeyPressed:
+				if (key->second->pressedCallback != nullptr)
+				{
+					key->second->pressedCallback();
+				}
+				break;
+
+			case sf::Event::KeyReleased:
+				if (key->second->releasedCallback != nullptr)
+				{
+					key->second->releasedCallback();
+				}
+				break;
 			}
+
+			it = _keyboardEvents.erase(it);
 		}
 	}
 }

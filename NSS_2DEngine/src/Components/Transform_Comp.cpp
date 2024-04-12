@@ -1,6 +1,7 @@
 #include "Transform_Comp.h"
 
 #include <iostream>
+#include <math.h>
 
 TransformComp::TransformComp(float posX, float posY)
 {

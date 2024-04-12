@@ -34,7 +34,7 @@ public:
 	{
 		for (const auto& component : _components)
 		{
-			if (T* found = static_cast<T*>(component))
+			if (T* found = dynamic_cast<T*>(component))
 			{
 				return found;
 			}
